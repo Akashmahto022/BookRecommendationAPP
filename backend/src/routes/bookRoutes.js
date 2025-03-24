@@ -72,6 +72,16 @@ router.get("/get-books", protectRoute, async (req, res) => {
     }
 })
 
+router.get("/user-book", protectRoute, async(req, res)=>{
+    try {
+        const books = await Book.find({user: req.user._id}).sort({createdAt: -1});
+        res.json({books})
+    } catch (error) {
+        console.log("error while geting user books", error.message)
+        res.status(500).json({ message: error.message })
+    }
+})
+
 router.delete("/delete-books/:id", protectRoute, async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
