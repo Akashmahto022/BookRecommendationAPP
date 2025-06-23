@@ -11,7 +11,6 @@ export default function Index() {
 
       <Link href="/signup" >Signup Page </Link>
       <Link href="/login" >Login Page </Link>
-
     </View>
   );
 }
